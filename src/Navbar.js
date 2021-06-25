@@ -1,9 +1,10 @@
 import React from 'react';
 import './Navbar.css';
 
-export default function Navbar({ setPage }) {
+export default function Navbar({ setPage,setIsUpdate }) {
    const changePage = (newPage) => {
       setPage(newPage);
+      setIsUpdate(false)
    };
 
    return (

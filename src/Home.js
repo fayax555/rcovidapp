@@ -5,7 +5,7 @@ import washImg from './img/homeImages/wash.jpg';
 import updatesImg from './img/homeImages/update.jpg';
 import quizImg from './img/homeImages/quiz.jpg';
 
-export default function Home({ setPage }) {
+export default function Home({ setPage, setIsUpdate }) {
    const changePage = (newPage) => {
       setPage(newPage);
    };
@@ -17,11 +17,12 @@ export default function Home({ setPage }) {
             style={{ backgroundImage: `url(${safetyImg})` }}
          />
          <div
+            onClick={() => changePage('wash')}
             className='btnItem'
             style={{ backgroundImage: `url(${washImg})` }}
          />
          <div
-            onClick={() => changePage('updates')}
+            onClick={() => setIsUpdate(true)}
             className='btnItem'
             style={{ backgroundImage: `url(${updatesImg})` }}
          />

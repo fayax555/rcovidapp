@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import UseLocalStorageState from './hooks/useLocalStorageState';
+import UseLocalStorageState from '../hooks/useLocalStorageState';
 import axios from 'axios';
 import './Updates.css';
 
@@ -20,7 +20,10 @@ export default function Updates() {
          const res = await axios.get(
             'https://fayaxcovidapimv.herokuapp.com/mihaaru'
          );
-         setCovidInfo(res.data);
+
+         console.log(JSON.stringify(res.data) === JSON.stringify(initialdata));
+         if (JSON.stringify(res.data) !== JSON.stringify(initialdata))
+            await setCovidInfo(res.data);
 
          if (Object.keys(initialdata).length === 0)
             window.localStorage.setItem('covidinfo', res.data);

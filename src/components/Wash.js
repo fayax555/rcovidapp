@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-import useToggle from './hooks/useToggle';
 import './Wash.css';
 
 let interval = null;
@@ -64,7 +63,7 @@ export default function Wash() {
          <div className='washContainer'>
             <div className='washContent'>
                <img
-                  src={require(`./img/washSvg/${i + 2}.svg`).default}
+                  src={require(`../img/washSvg/${i + 2}.svg`).default}
                   alt=''
                />
                <p className='number'>{i + 2}</p>
@@ -78,12 +77,12 @@ export default function Wash() {
       if (!isPlaying) {
          setIsPlaying(true);
          labelBtnArray[sIterator].current.click();
-         new Audio(require(`./assets/washaudio/wash1.mp3`).default).play();
+         new Audio(require(`../assets/washaudio/wash1.mp3`).default).play();
          interval = setInterval(() => {
             if (sIterator < 9) {
                labelBtnArray[sIterator + 1].current.click();
                new Audio(
-                  require(`./assets/washaudio/wash${sIterator + 2}.mp3`).default
+                  require(`../assets/washaudio/wash${sIterator + 2}.mp3`).default
                ).play();
                sIterator++;
             } else if (sIterator >= 9) {
@@ -121,7 +120,7 @@ export default function Wash() {
                      <div className='washContainer'>
                         <div className='washContent'>
                            <img
-                              src={require('./img/washSvg/1.svg').default}
+                              src={require('../img/washSvg/1.svg').default}
                               alt=''
                            />
                            <p className='number'>1</p>
