@@ -1,0 +1,23 @@
+.Home {
+   display: flex;
+   flex-wrap: wrap;
+   grid-template-columns: 1fr 1fr;
+   justify-content: center;
+   align-items: center;
+   padding-top: 3rem;
+   gap: 3rem;
+}
+
+.Home .btnItem {
+   padding: 1rem;
+   cursor: pointer;
+   width: 415px;
+   height: 250px;
+   transition: 0.3s ease-in-out;
+   background-size: 100% 100%;
+   border-radius: 7px;
+}
+
+.Home .btnItem:hover {
+   transform: scale(1.05);
+}

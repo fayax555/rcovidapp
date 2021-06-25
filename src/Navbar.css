@@ -1,0 +1,20 @@
+.Navbar {
+   background-color: #1aaa8b;
+   display: flex;
+   justify-content: center;
+}
+
+.Navbar .btn {
+   background-color: rgb(63, 63, 66);
+   /* outline: none;
+   border: none; */
+   color: #fff;
+   padding: 0.5rem 1.5rem;
+   margin: 1rem 2rem;
+   transition: 0.3s ease-in-out;
+   font-size: 1.2rem;
+   font-weight: bold;
+   text-align: center;
+   border-radius: 5px;
+   cursor: pointer;
+}
