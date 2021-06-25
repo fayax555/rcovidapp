@@ -28,6 +28,7 @@ export default function Updates() {
          setLoading(false);
       }
       getData();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, []);
 
    const {
