@@ -13,6 +13,7 @@ export default function Home({ setPage, setIsUpdate }) {
    return (
       <div className='Home'>
          <div
+            onClick={() => changePage('safety')}
             className='btnItem'
             style={{ backgroundImage: `url(${safetyImg})` }}
          />

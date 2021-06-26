@@ -75,7 +75,7 @@ input[name='r'] {
 .washbox .btnStartSlides {
    padding: 0.75rem 1.5rem;
    margin-top: -0.5rem;
-   margin-left: 0;
+   margin-left: 0.5rem;
    background-color: green;
    color: #fff;
    font-size: 1.1rem;
@@ -115,11 +115,12 @@ input[name='r'] {
    position: sticky;
 }
 
-.slide {
+.Wash .slide {
    width: 20%;
    transition: 0.6s;
 }
-.slide img {
+
+.Wash .slide img {
    object-fit: fill;
 }
 

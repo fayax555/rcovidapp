@@ -7,7 +7,7 @@ let sIterator = 0;
 
 export default function Wash() {
    const [isPlaying, setIsPlaying] = useState(false);
-   
+
    if (isPlaying === false) {
       clearInterval(interval);
    }
@@ -82,7 +82,9 @@ export default function Wash() {
             if (sIterator < 9) {
                labelBtnArray[sIterator + 1].current.click();
                new Audio(
-                  require(`../assets/washaudio/wash${sIterator + 2}.mp3`).default
+                  require(`../assets/washaudio/wash${
+                     sIterator + 2
+                  }.mp3`).default
                ).play();
                sIterator++;
             } else if (sIterator >= 9) {
@@ -101,7 +103,7 @@ export default function Wash() {
    };
 
    return (
-      <div>
+      <div className='Wash'>
          <h2 className='washH2'>HOW TO WASH YOUR HANDS</h2>
          <div className='washbox'>
             <div className='btnStartBox'>

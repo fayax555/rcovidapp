@@ -4,6 +4,7 @@ import { useState } from 'react';
 import './App.css';
 import Navbar from './Navbar';
 import Home from './Home';
+import Safety from './Safety';
 import Updates from './components/Updates';
 import Wash from './components/Wash';
 
@@ -15,6 +16,9 @@ function App() {
       if (page === 'home') {
          return <Home setPage={setPage} setIsUpdate={setIsUpdate} />;
       }
+      if (page === 'safety') {
+         return <Safety />;
+      }
 
       if (page === 'wash') {
          return <Wash />;
@@ -23,9 +27,10 @@ function App() {
 
    return (
       <div className='App'>
-         <Navbar setPage={setPage} setIsUpdate={setIsUpdate}  />
+         <Navbar setPage={setPage} setIsUpdate={setIsUpdate} />
 
          {!isUpdate && renderPage()}
+
          <div style={{ display: isUpdate ? 'block' : 'none' }}>
             <Updates />
          </div>
