@@ -16,13 +16,14 @@ export const Button = styled.button`
 `;
 
 export const Text = styled.p`
-   font-size: ${(props) => props.fs || '1rem'};
+   font-size: ${(props) => props.size || '1rem'};
    margin: ${(props) => props.m};
 `;
 
 export const Wrapper = styled.div`
    display: flex;
-   flex-direction: column;
-   align-items: center;
+   flex-direction: ${(props) => props.fdir || 'column'};
+   align-items: ${(props) => props.aitems || 'center'};
    margin-top: ${(props) => props.mt};
+   gap: ${(props) => props.gap};
 `;

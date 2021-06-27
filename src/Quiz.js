@@ -42,11 +42,9 @@ export default function Quiz() {
       },
    ];
 
-   const handleClick = () => {
+   const handleNextBtn = () => {
       setIsClicked(false);
-      if (count < quiz.length) {
-         setCount(count + 1);
-      }
+      setCount(count + 1);
    };
 
    const quizContent = () => (
@@ -59,9 +57,7 @@ export default function Quiz() {
          >
             {isCorrect ? 'CORRECT!' : 'WRONG'}
          </h1>
-
-         <Text fs='1.75rem'>{quiz[count].question}</Text>
-
+         <Text size='1.75rem'>{quiz[count].question}</Text>
          {quiz[count].answers.map((answer) => (
             <>
                <QuizButton
@@ -76,37 +72,51 @@ export default function Quiz() {
             </>
          ))}
 
-         {isClick && (
-            <Button
-               style={{ backgroundColor: '#333' }}
-               onClick={handleClick}
-               mt='2rem'
-               p='1.5rem 3rem'
-            >
-               Next
-            </Button>
-         )}
+         <Button
+            style={{ backgroundColor: '#333' }}
+            onClick={handleNextBtn}
+            mt='2rem'
+            p='1.5rem 3rem'
+         >
+            Next
+         </Button>
       </>
    );
+
+   function handleRestart() {
+      setCount(0);
+      setIsClicked(false);
+      setIsCorrect(false);
+      setScore(0);
+   }
+   const quizOver = () => (
+      <Wrapper mt='5rem'>
+         <Text size='3rem'>Game Over</Text>
+         <Text size='2rem'>Your Score is: {score}</Text>
+         <Button onClick={handleRestart}>Restart</Button>
+      </Wrapper>
+   );
+
+   const content = () => {
+      if (isClick && count === quiz.length - 1) {
+         return quizOver();
+      } else {
+         return quizContent();
+      }
+   };
 
    return (
       <div className='Quiz'>
          <Wrapper mt='2rem'>
             {count < quiz.length && (
-               <>
-                  <Text fs='1.5rem'>Question: {count + 1}</Text>
-                  <Text fs='1.5rem'>Score: {score}</Text>
-               </>
-            )}
-            {count < quiz.length ? (
-               quizContent()
-            ) : (
-               <Wrapper mt='5rem'>
-                  <Text fs='3rem'>Game Over</Text>
-                  <Text fs='2rem'>Your Score is: {score}</Text>
-                  <Button onClick={() => setCount(0)}>Restart</Button>
+               <Wrapper fdir='row' gap='35rem'>
+                  <Text size='1.5rem'>
+                     Question: {count + 1}/{quiz.length}
+                  </Text>
+                  <Text size='1.5rem'>Score: {score}</Text>
                </Wrapper>
             )}
+            {content()}
          </Wrapper>
       </div>
    );

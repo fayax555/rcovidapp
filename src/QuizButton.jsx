@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Button } from './Styles.jsx';
+import correctSound from './assets/audio/correct.mp3';
+import wrongSound from './assets/audio/wrong.mp3';
 
 const QuizButton = styled(Button)`
    width: 800px;
@@ -24,6 +26,7 @@ export default function QuizButtonFn({
    };
 
    const handleClick = () => {
+      new Audio(correct ? correctSound : wrongSound).play();
       setIsClicked(true);
       setIsCorrect(correct);
       setScore(correct ? score + 1 : score);
