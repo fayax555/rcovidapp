@@ -1,12 +1,12 @@
 /* eslint-disable no-unused-vars */
 import { useState } from 'react';
-
 import './App.css';
 import Navbar from './Navbar';
 import Home from './Home';
 import Safety from './Safety';
 import Updates from './components/Updates';
 import Wash from './components/Wash';
+import Quiz from './Quiz';
 
 function App() {
    const [page, setPage] = useState('home');
@@ -29,11 +29,12 @@ function App() {
       <div className='App'>
          <Navbar setPage={setPage} setIsUpdate={setIsUpdate} />
 
-         {!isUpdate && renderPage()}
+         {/* {!isUpdate && renderPage()}
 
          <div style={{ display: isUpdate ? 'block' : 'none' }}>
             <Updates />
-         </div>
+         </div> */}
+         <Quiz />
       </div>
    );
 }
