@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { quiz } from './quizContent.js';
 import { Button, Wrapper, Text } from './Styles.jsx';
 import QuizButton from './QuizButton.jsx';
 
@@ -7,40 +8,7 @@ export default function Quiz() {
    const [isClick, setIsClicked] = useState(false);
    const [isCorrect, setIsCorrect] = useState(false);
    const [score, setScore] = useState(0);
-
-   const quiz = [
-      {
-         question: `What is HPA's phone number?`,
-         answers: [
-            { text: '7915423', correct: false },
-            { text: '1676', correct: true },
-            { text: '1444', correct: false },
-         ],
-      },
-      {
-         question:
-            'Which one of the following are the most common symptoms of Covid-19?',
-         answers: [
-            { text: 'Fever, cough, tiredness', correct: true },
-            { text: 'dizziness, body ache', correct: false },
-         ],
-      },
-      {
-         question: 'What test tells you if you previously had covid?',
-         answers: [
-            { text: 'Antibody', correct: true },
-            { text: 'PCR', correct: false },
-            { text: 'No test can tell you', correct: false },
-         ],
-      },
-      {
-         question: 'Can you always tell if someone has COVID-19?',
-         answers: [
-            { text: 'Yes', correct: false },
-            { text: 'No', correct: true },
-         ],
-      },
-   ];
+   const [gameOver, setGameOver] = useState(false);
 
    const handleNextBtn = () => {
       setIsClicked(false);
@@ -72,14 +40,16 @@ export default function Quiz() {
             </>
          ))}
 
-         <Button
-            style={{ backgroundColor: '#333' }}
-            onClick={handleNextBtn}
-            mt='2rem'
-            p='1.5rem 3rem'
-         >
-            Next
-         </Button>
+         {isClick && !(count === quiz.length - 1) && (
+            <Button
+               style={{ backgroundColor: '#333' }}
+               onClick={handleNextBtn}
+               mt='2rem'
+               p='1.5rem 3rem'
+            >
+               Next
+            </Button>
+         )}
       </>
    );
 
@@ -88,6 +58,7 @@ export default function Quiz() {
       setIsClicked(false);
       setIsCorrect(false);
       setScore(0);
+      setGameOver(false);
    }
    const quizOver = () => (
       <Wrapper mt='5rem'>
@@ -97,13 +68,13 @@ export default function Quiz() {
       </Wrapper>
    );
 
-   const content = () => {
-      if (isClick && count === quiz.length - 1) {
-         return quizOver();
-      } else {
-         return quizContent();
+   useEffect(() => {
+      if (count === quiz.length - 1 && isClick === true) {
+         setTimeout(() => {
+            setGameOver(true);
+         }, 2000);
       }
-   };
+   }, [count, isClick]);
 
    return (
       <div className='Quiz'>
@@ -116,7 +87,7 @@ export default function Quiz() {
                   <Text size='1.5rem'>Score: {score}</Text>
                </Wrapper>
             )}
-            {content()}
+            {gameOver ? quizOver() : quizContent()}
          </Wrapper>
       </div>
    );
