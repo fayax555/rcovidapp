@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { quiz } from './quizContent.js';
-import { Button, Wrapper, Text } from './Styles.jsx';
+import { Heading, Button, Wrapper, Text } from './Styles.jsx';
 import QuizButton from './QuizButton.jsx';
 
 export default function Quiz() {
@@ -27,17 +27,15 @@ export default function Quiz() {
          </h1>
          <Text size='1.75rem'>{quiz[count].question}</Text>
          {quiz[count].answers.map((answer) => (
-            <>
-               <QuizButton
-                  isClicked={isClick}
-                  setIsClicked={setIsClicked}
-                  setIsCorrect={setIsCorrect}
-                  score={score}
-                  setScore={setScore}
-                  text={answer.text}
-                  correct={answer.correct}
-               />
-            </>
+            <QuizButton
+               isClicked={isClick}
+               setIsClicked={setIsClicked}
+               setIsCorrect={setIsCorrect}
+               score={score}
+               setScore={setScore}
+               text={answer.text}
+               correct={answer.correct}
+            />
          ))}
 
          {isClick && !(count === quiz.length - 1) && (
@@ -53,13 +51,14 @@ export default function Quiz() {
       </>
    );
 
-   function handleRestart() {
+   const handleRestart = () => {
       setCount(0);
       setIsClicked(false);
       setIsCorrect(false);
       setScore(0);
       setGameOver(false);
-   }
+   };
+
    const quizOver = () => (
       <Wrapper mt='5rem'>
          <Text size='3rem'>Game Over</Text>
@@ -69,7 +68,9 @@ export default function Quiz() {
    );
 
    useEffect(() => {
-      if (count === quiz.length - 1 && isClick === true) {
+      // if useEffect is not used here, a bug appears when restart is clicked after few seconds
+      // bug:- the end score screen appears a second time
+      if (count === 6 && isClick === true) {
          setTimeout(() => {
             setGameOver(true);
          }, 2000);
@@ -78,7 +79,8 @@ export default function Quiz() {
 
    return (
       <div className='Quiz'>
-         <Wrapper mt='2rem'>
+         <Heading>COVID QUIZ</Heading>
+         <Wrapper>
             {count < quiz.length && (
                <Wrapper fdir='row' gap='35rem'>
                   <Text size='1.5rem'>

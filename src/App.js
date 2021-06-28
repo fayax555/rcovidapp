@@ -23,18 +23,20 @@ function App() {
       if (page === 'wash') {
          return <Wash />;
       }
+      if (page === 'quiz') {
+         return <Quiz />;
+      }
    };
 
    return (
       <div className='App'>
          <Navbar setPage={setPage} setIsUpdate={setIsUpdate} />
 
-         {/* {!isUpdate && renderPage()}
+         {!isUpdate && renderPage()}
 
          <div style={{ display: isUpdate ? 'block' : 'none' }}>
             <Updates />
-         </div> */}
-         <Quiz />
+         </div>
       </div>
    );
 }

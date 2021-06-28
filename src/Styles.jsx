@@ -10,9 +10,15 @@ export const Button = styled.button`
    background-color: ${(props) => props.bgColor || 'blue'};
    border-radius: 3px;
    cursor: pointer;
+   
    &:hover {
       opacity: 0.7;
    }
+`;
+
+export const Heading = styled.h1`
+   text-align: center;
+   padding-top: 1rem;
 `;
 
 export const Text = styled.p`

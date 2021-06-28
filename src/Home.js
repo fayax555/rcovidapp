@@ -28,6 +28,7 @@ export default function Home({ setPage, setIsUpdate }) {
             style={{ backgroundImage: `url(${updatesImg})` }}
          />
          <div
+            onClick={() => changePage('quiz')}
             className='btnItem'
             style={{ backgroundImage: `url(${quizImg})` }}
          />
